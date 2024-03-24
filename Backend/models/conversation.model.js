@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const conversationSchema = new mongoose.schema(
+const conversationSchema = new mongoose.Schema(
   {
     participants: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     messages: [
@@ -10,6 +10,7 @@ const conversationSchema = new mongoose.schema(
   { timestamps: true } // createdAt: , updatedAt:
 );
 
-const Conversation = mongoose.model("conversation", conversationSchema);
+ const Conversation = mongoose.model("conversation", conversationSchema);
 
-export default conversationSchema;
+export default Conversation;
+ 
