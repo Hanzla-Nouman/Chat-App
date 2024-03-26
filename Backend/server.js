@@ -11,24 +11,25 @@ import connectToDb from "./db/connectToDb.js";
 
 dotenv.config();
 
-const app = express();
-const PORT = process.env.PORT ;
+import { app,server } from "./socket/socket.js";
+const PORT = 5000 || process.env.PORT ;
   
 
 app.use(express.json());// to parse the incoming request with JSON payload (from req.body)
 app.use(cors())
 app.use(cookieParser());// to parse the incoming request with
-
+  
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/users", userRoutes);    
 
+     
 // app.get("/", (req, res) => {
 //   // root route http://localhost:5000/
 //   res.send("Hello World");
-// });
-
-app.listen(PORT, () => {
+// }); 
+ 
+server.listen(PORT, () => {
   connectToDb();
   console.log(`App listening on port ${PORT}`);
 });
